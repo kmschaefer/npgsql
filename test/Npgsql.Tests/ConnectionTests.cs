@@ -260,8 +260,8 @@ namespace Npgsql.Tests
                     // Send notify via the other connection
                     ExecuteNonQuery("NOTIFY notifytest2");
                 }
+                Assert.That(receivedNotification, Is.True);
             }
-            Assert.That(receivedNotification, Is.True);
         }
 
         [Test, Description("Receive an asynchronous notification when a message has already been prepended")]

@@ -1028,9 +1028,11 @@ namespace Npgsql
         /// </summary>
         void DrainBufferedMessages()
         {
+            Console.WriteLine("Draining buffer");
             while (HasDataInBuffers)
             {
                 var msg = ReadSingleMessage(DataRowLoadingMode.NonSequential, true);
+                Console.WriteLine("Got message of type: " + (msg == null ? "null" : msg.Code.ToString()));
                 if (msg != null)
                 {
                     Break();
